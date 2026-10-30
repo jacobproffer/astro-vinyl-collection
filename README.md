@@ -1,4 +1,4 @@
-# Astro Starter
+# Vinyl Collection
 
 Made with Astro and Tailwind.
 
