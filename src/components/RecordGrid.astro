@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const records = (await getCollection("records")).sort((a, b) =>
+  a.data.artist.localeCompare(b.data.artist) || a.data.title.localeCompare(b.data.title),
+);
+
+const genres = [...new Set(records.flatMap((r) => r.data.genres))].sort();
+const decades = [
+  ...new Set(records.filter((r) => r.data.year).map((r) => Math.floor(r.data.year! / 10) * 10)),
+].sort();
+---
+
+<div class="my-6 flex flex-wrap gap-3">
+  <input id="search" type="search" placeholder="Search artist or title" class="border px-3 py-2 rounded grow" />
+  <select id="genre" class="border px-3 py-2 rounded">
+    <option value="">All genres</option>
+    {genres.map((g) => <option value={g}>{g}</option>)}
+  </select>
+  <select id="decade" class="border px-3 py-2 rounded">
+    <option value="">All decades</option>
+    {decades.map((d) => <option value={d}>{d}s</option>)}
+  </select>
+</div>
+
+<p id="count" class="mb-4 text-sm" aria-live="polite"></p>
+
+<ul class="grid grid-cols-2 gap-6 md:grid-cols-4" id="grid">
+  {
+    records.map(({ data }) => (
+      <li
+        data-search={`${data.artist} ${data.title}`.toLowerCase()}
+        data-genres={data.genres.join("|")}
+        data-decade={data.year ? Math.floor(data.year / 10) * 10 : ""}
+      >
+        {data.cover ? (
+          <Image src={data.cover} alt={`${data.title} by ${data.artist}`} width={400} height={400} class="aspect-square w-full object-cover" />
+        ) : (
+          <div class="aspect-square w-full bg-neutral-200 flex items-center justify-center text-sm p-2 text-center">
+            No cover
+          </div>
+        )}
+        <p class="mt-2 font-semibold">{data.title}</p>
+        <p class="text-sm">{data.artist}{data.year ? ` · ${data.year}` : ""}</p>
+        {data.variant && <p class="text-xs text-neutral-500">{data.variant}</p>}
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("#search")!;
+  const genre = document.querySelector<HTMLSelectElement>("#genre")!;
+  const decade = document.querySelector<HTMLSelectElement>("#decade")!;
+  const count = document.querySelector<HTMLElement>("#count")!;
+  const items = [...document.querySelectorAll<HTMLElement>("#grid > li")];
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const match =
+        (!q || li.dataset.search!.includes(q)) &&
+        (!genre.value || li.dataset.genres!.split("|").includes(genre.value)) &&
+        (!decade.value || li.dataset.decade === decade.value);
+      li.hidden = !match;
+      if (match) shown++;
+    }
+    count.textContent = `${shown} of ${items.length} records`;
+  }
+
+  [search, genre, decade].forEach((el) => el.addEventListener("input", apply));
+  apply();
+</script>
