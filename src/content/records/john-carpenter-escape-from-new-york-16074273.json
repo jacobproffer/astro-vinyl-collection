@@ -1,0 +1,20 @@
+{
+  "artist": "John Carpenter",
+  "title": "Escape From New York ",
+  "year": 2020,
+  "label": "Waxwork Records",
+  "genres": [
+    "Stage & Screen"
+  ],
+  "styles": [
+    "Score",
+    "Soundtrack"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/john-carpenter-escape-from-new-york-16074273.jpg",
+  "discogsId": 16074273,
+  "variant": "Orange Marble",
+  "descriptions": [
+    "LP"
+  ]
+}

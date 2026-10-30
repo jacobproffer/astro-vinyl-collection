@@ -1,0 +1,25 @@
+{
+  "artist": "Hiroshi Suzuki",
+  "title": "Cat",
+  "year": 2021,
+  "label": "We Release Jazz",
+  "genres": [
+    "Jazz"
+  ],
+  "styles": [
+    "Fusion",
+    "Jazz-funk"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/hiroshi-suzuki-cat-19501540.jpg",
+  "discogsId": 19501540,
+  "variant": "180g",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Limited Edition",
+    "Reissue",
+    "Remastered",
+    "Stereo"
+  ]
+}

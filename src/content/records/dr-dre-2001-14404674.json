@@ -1,0 +1,22 @@
+{
+  "artist": "Dr. Dre",
+  "title": "2001",
+  "year": 2019,
+  "label": "Aftermath Entertainment",
+  "genres": [
+    "Hip Hop"
+  ],
+  "styles": [
+    "Gangsta",
+    "G-funk"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/dr-dre-2001-14404674.jpg",
+  "discogsId": 14404674,
+  "variant": "Uncensored",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue"
+  ]
+}
