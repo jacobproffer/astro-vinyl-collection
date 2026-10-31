@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Pirata One", "UnifrakturMaguntia", serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-paper: #f2efe8;
+}
+
+/* Row of evenly spaced dots, like the reference's ruled spacer rows. */
+@utility dot-rule {
+  height: 0.5rem;
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px);
+  background-size: 6rem 100%;
+  background-position: 3rem center;
+}
+
+/* --- Record disc ------------------------------------------------------- */
+/* --disc is set per record from its variant (see RecordGrid.astro). */
+.disc {
+  background:
+    radial-gradient(circle, var(--color-paper) 0 16%, rgb(0 0 0 / 0.5) 16% 16.6%, transparent 16.6%),
+    repeating-radial-gradient(circle, rgb(255 255 255 / 0.07) 0 1px, transparent 1px 3px),
+    radial-gradient(circle, transparent 0 46%, rgb(0 0 0 / 0.25) 49% 50%),
+    var(--disc, linear-gradient(#111, #111));
+  mask: radial-gradient(circle, transparent 0 2.5%, #000 2.6%);
+  translate: 38% 0;
+  rotate: 200deg;
+}
+
+.sleeve {
+  view-timeline: --sleeve block;
+}
+
+@keyframes slide-out {
+  from {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  to {
+    translate: 38% 0;
+    rotate: 200deg;
+  }
+}
+
+@keyframes drift {
+  from {
+    translate: 12% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+/* Browsers without scroll-driven animations get the disc already pulled out. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .disc {
+      animation: slide-out linear both;
+      animation-timeline: --sleeve;
+      animation-range: entry 20% cover 50%;
+    }
+
+    .wordmark {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+  }
+}
