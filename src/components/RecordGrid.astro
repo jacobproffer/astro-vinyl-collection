@@ -17,7 +17,8 @@ const decades = [
 ].sort();
 ---
 
-<section id="records" class="scroll-mt-0">
+<section id="records" class="scroll-mt-0" aria-labelledby="records-heading">
+  <h2 id="records-heading" class="sr-only">Browse records</h2>
   <FilterBar genres={genres} decades={decades} />
   <ResultsBar />
 

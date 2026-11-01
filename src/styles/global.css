@@ -7,20 +7,21 @@
   --color-paper: #f2efe8;
 }
 
-/* Row of evenly spaced dots, like the reference's ruled spacer rows. */
-@utility dot-rule {
-  height: 0.5rem;
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px);
-  background-size: 6rem 100%;
-  background-position: 3rem center;
-}
-
 /* --- Record disc ------------------------------------------------------- */
 /* --disc is set per record from its variant (see RecordGrid.astro). */
 .disc {
   background:
-    radial-gradient(circle, var(--color-paper) 0 16%, rgb(0 0 0 / 0.5) 16% 16.6%, transparent 16.6%),
-    repeating-radial-gradient(circle, rgb(255 255 255 / 0.07) 0 1px, transparent 1px 3px),
+    radial-gradient(
+      circle,
+      var(--color-paper) 0 16%,
+      rgb(0 0 0 / 0.5) 16% 16.6%,
+      transparent 16.6%
+    ),
+    repeating-radial-gradient(
+      circle,
+      rgb(255 255 255 / 0.07) 0 1px,
+      transparent 1px 3px
+    ),
     radial-gradient(circle, transparent 0 46%, rgb(0 0 0 / 0.25) 49% 50%),
     var(--disc, linear-gradient(#111, #111));
   mask: radial-gradient(circle, transparent 0 2.5%, #000 2.6%);
