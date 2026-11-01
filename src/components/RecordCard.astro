@@ -38,6 +38,7 @@ const { record, index } = Astro.props;
     cover={record.cover}
     alt={`${record.title} by ${record.artist}`}
     variant={record.variant}
+    priority={index < 3}
   />
 
   <div

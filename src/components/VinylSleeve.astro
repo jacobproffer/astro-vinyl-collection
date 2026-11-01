@@ -7,9 +7,10 @@ interface Props {
   cover?: ImageMetadata;
   alt: string;
   variant?: string;
+  priority?: boolean;
 }
 
-const { cover, alt, variant } = Astro.props;
+const { cover, alt, variant, priority = false } = Astro.props;
 ---
 
 <div class="sleeve relative my-12 ml-[8%] aspect-square w-3/5">
@@ -26,6 +27,10 @@ const { cover, alt, variant } = Astro.props;
         alt={alt}
         width={400}
         height={400}
+        widths={[240, 400, 640]}
+        sizes="(min-width: 1536px) 15vw, (min-width: 1024px) 20vw, (min-width: 640px) 30vw, 60vw"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
         class="relative aspect-square w-full object-cover"
       />
     ) : (
