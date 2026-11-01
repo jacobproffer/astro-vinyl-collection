@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.example.com",
+  site: "https://records.proffer.dev/",
   integrations: [sitemap()],
   // Image optimization configuration
   image: {
