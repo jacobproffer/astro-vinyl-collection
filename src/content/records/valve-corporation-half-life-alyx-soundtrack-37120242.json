@@ -1,0 +1,31 @@
+{
+  "artist": "Valve Corporation",
+  "title": "Half Life: Alyx Soundtrack",
+  "year": 2026,
+  "label": "Valve",
+  "genres": [
+    "Electronic",
+    "Rock",
+    "Stage & Screen"
+  ],
+  "styles": [
+    "Score",
+    "Video Game Music",
+    "Soundtrack",
+    "Ambient",
+    "Leftfield",
+    "Modern Classical",
+    "Dark Ambient",
+    "Breaks",
+    "Big Beat",
+    "Illbient",
+    "Industrial"
+  ],
+  "format": "Box Set",
+  "descriptions": [
+    "Limited Edition",
+    "Reissue"
+  ],
+  "cover": "../../assets/covers/valve-corporation-half-life-alyx-soundtrack-37120242.jpg",
+  "discogsId": 37120242
+}

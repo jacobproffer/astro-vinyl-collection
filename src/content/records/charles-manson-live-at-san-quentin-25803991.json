@@ -1,0 +1,23 @@
+{
+  "artist": "Charles Manson",
+  "title": "Live At San Quentin",
+  "year": 2022,
+  "label": "Survival Research",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Acoustic",
+    "Lo-fi",
+    "Folk Rock"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Unofficial Release"
+  ],
+  "cover": "../../assets/covers/charles-manson-live-at-san-quentin-25803991.jpg",
+  "discogsId": 25803991
+}

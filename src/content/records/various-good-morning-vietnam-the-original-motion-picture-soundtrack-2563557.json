@@ -1,0 +1,31 @@
+{
+  "artist": "Various",
+  "title": "Good Morning, Vietnam - The Original Motion Picture Soundtrack",
+  "year": 1988,
+  "label": "A&M Records",
+  "genres": [
+    "Rock",
+    "Funk / Soul",
+    "Non-music",
+    "Pop",
+    "Stage & Screen"
+  ],
+  "styles": [
+    "Surf",
+    "Rock & Roll",
+    "Pop Rock",
+    "Spoken Word",
+    "Soul",
+    "Soundtrack",
+    "Rhythm & Blues"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Compilation",
+    "Stereo",
+    "Mono"
+  ],
+  "cover": "../../assets/covers/various-good-morning-vietnam-the-original-motion-picture-soundtrack-2563557.jpg",
+  "discogsId": 2563557
+}

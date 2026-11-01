@@ -1,0 +1,22 @@
+{
+  "artist": "Eminem",
+  "title": "The Marshall Mathers LP",
+  "year": 2013,
+  "label": "Aftermath Entertainment",
+  "genres": [
+    "Hip Hop"
+  ],
+  "styles": [
+    "Hardcore Hip-hop",
+    "Horrorcore"
+  ],
+  "format": "Vinyl",
+  "variant": "180 gram",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue"
+  ],
+  "cover": "../../assets/covers/eminem-the-marshall-mathers-lp-5252470.jpg",
+  "discogsId": 5252470
+}
