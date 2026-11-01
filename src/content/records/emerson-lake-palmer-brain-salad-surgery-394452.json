@@ -1,0 +1,23 @@
+{
+  "artist": "Emerson, Lake & Palmer",
+  "title": "Brain Salad Surgery",
+  "year": 1973,
+  "label": "Manticore",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Psychedelic Rock",
+    "Avantgarde",
+    "Prog Rock"
+  ],
+  "format": "Vinyl",
+  "variant": "Specialty Pressing",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/emerson-lake-palmer-brain-salad-surgery-394452.jpg",
+  "discogsId": 394452
+}

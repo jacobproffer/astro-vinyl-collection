@@ -1,0 +1,21 @@
+{
+  "artist": "George Carlin",
+  "title": "FM & AM",
+  "year": 1972,
+  "label": "Little David Records",
+  "genres": [
+    "Non-music"
+  ],
+  "styles": [
+    "Comedy"
+  ],
+  "format": "Vinyl",
+  "variant": "MO / Monarch Pressing",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/george-carlin-fm-am-923376.jpg",
+  "discogsId": 923376
+}

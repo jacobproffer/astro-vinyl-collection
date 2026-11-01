@@ -1,0 +1,22 @@
+{
+  "artist": "Nat King Cole",
+  "title": "The Christmas Song",
+  "year": 2014,
+  "label": "Capitol Records",
+  "genres": [
+    "Pop"
+  ],
+  "styles": [
+    "Vocal",
+    "Holiday"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/nat-king-cole-the-christmas-song-6360065.jpg",
+  "discogsId": 6360065
+}

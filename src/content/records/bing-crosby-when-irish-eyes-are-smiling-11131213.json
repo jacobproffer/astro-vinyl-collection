@@ -1,0 +1,20 @@
+{
+  "artist": "Bing Crosby",
+  "title": "When Irish Eyes Are Smiling",
+  "year": 1980,
+  "label": "MCA Records",
+  "genres": [
+    "Pop"
+  ],
+  "styles": [
+    "Vocal"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue"
+  ],
+  "cover": "../../assets/covers/bing-crosby-when-irish-eyes-are-smiling-11131213.jpg",
+  "discogsId": 11131213
+}

@@ -1,0 +1,23 @@
+{
+  "artist": "AC/DC",
+  "title": "Back In Black",
+  "year": 2009,
+  "label": "Columbia",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Hard Rock",
+    "Blues Rock"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Remastered",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/ac-dc-back-in-black-1949857.jpg",
+  "discogsId": 1949857
+}

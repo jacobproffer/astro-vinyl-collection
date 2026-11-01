@@ -1,0 +1,25 @@
+{
+  "artist": "The Dave Brubeck Quartet",
+  "title": "Time Out",
+  "year": 2010,
+  "label": "Jazz Wax Records",
+  "genres": [
+    "Jazz"
+  ],
+  "styles": [
+    "Bop",
+    "Hard Bop"
+  ],
+  "format": "Vinyl",
+  "variant": "180 Gram, DMM",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Limited Edition",
+    "Reissue",
+    "Remastered",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/the-dave-brubeck-quartet-time-out-2383925.jpg",
+  "discogsId": 2383925
+}

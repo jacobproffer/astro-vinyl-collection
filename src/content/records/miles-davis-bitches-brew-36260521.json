@@ -1,0 +1,23 @@
+{
+  "artist": "Miles Davis",
+  "title": "Bitches Brew",
+  "year": 2019,
+  "label": "Columbia",
+  "genres": [
+    "Jazz",
+    "Rock"
+  ],
+  "styles": [
+    "Fusion"
+  ],
+  "format": "Vinyl",
+  "variant": "Gatefold",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/miles-davis-bitches-brew-36260521.jpg",
+  "discogsId": 36260521
+}

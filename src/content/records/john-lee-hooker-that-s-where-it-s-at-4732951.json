@@ -1,0 +1,22 @@
+{
+  "artist": "John Lee Hooker",
+  "title": "That's Where It's At",
+  "year": 1972,
+  "label": "Stax",
+  "genres": [
+    "Blues"
+  ],
+  "styles": [
+    "Delta Blues"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Club Edition",
+    "Reissue",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/john-lee-hooker-that-s-where-it-s-at-4732951.jpg",
+  "discogsId": 4732951
+}

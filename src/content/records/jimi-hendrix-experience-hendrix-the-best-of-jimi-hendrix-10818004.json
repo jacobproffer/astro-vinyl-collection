@@ -1,0 +1,22 @@
+{
+  "artist": "Jimi Hendrix",
+  "title": "Experience Hendrix - The Best Of Jimi Hendrix ‎",
+  "year": 2017,
+  "label": "Experience Hendrix",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Psychedelic Rock",
+    "Blues Rock"
+  ],
+  "format": "Vinyl",
+  "variant": "Gatefold, 150 grams",
+  "descriptions": [
+    "LP",
+    "Compilation",
+    "Reissue"
+  ],
+  "cover": "../../assets/covers/jimi-hendrix-experience-hendrix-the-best-of-jimi-hendrix-10818004.jpg",
+  "discogsId": 10818004
+}

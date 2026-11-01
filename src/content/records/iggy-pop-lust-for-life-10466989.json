@@ -1,0 +1,21 @@
+{
+  "artist": "Iggy Pop",
+  "title": "Lust For Life",
+  "year": 2017,
+  "label": "Virgin",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Garage Rock"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Remastered"
+  ],
+  "cover": "../../assets/covers/iggy-pop-lust-for-life-10466989.jpg",
+  "discogsId": 10466989
+}
