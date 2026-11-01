@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { discStyle } from "../lib/vinyl";
+
+interface Props {
+  cover?: ImageMetadata;
+  alt: string;
+  variant?: string;
+}
+
+const { cover, alt, variant } = Astro.props;
+---
+
+<div class="sleeve relative my-12 ml-[8%] aspect-square w-3/5">
+  <div
+    class="disc absolute inset-0 rounded-full"
+    style={discStyle(variant)}
+    aria-hidden="true"
+  >
+  </div>
+  {
+    cover ? (
+      <Image
+        src={cover}
+        alt={alt}
+        width={400}
+        height={400}
+        class="relative aspect-square w-full object-cover"
+      />
+    ) : (
+      <div class="relative flex aspect-square w-full items-center justify-center border border-current bg-white p-2 group-hover:bg-black text-center font-mono text-[11px] uppercase">
+        No cover
+      </div>
+    )
+  }
+</div>

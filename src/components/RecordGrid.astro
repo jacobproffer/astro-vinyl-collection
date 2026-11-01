@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
-
-// Ignore a leading "The " so "The Beatles" sorts under B.
-const sortKey = (s: string) => s.replace(/^the\s+/i, "");
+import FilterBar from "./FilterBar.astro";
+import RecordCard from "./RecordCard.astro";
+import ResultsBar from "./ResultsBar.astro";
+import { decadeOf, sortKey } from "../lib/vinyl";
 
 const records = (await getCollection("records")).sort(
   (a, b) =>
@@ -13,234 +13,19 @@ const records = (await getCollection("records")).sort(
 
 const genres = [...new Set(records.flatMap((r) => r.data.genres))].sort();
 const decades = [
-  ...new Set(
-    records
-      .filter((r) => r.data.year)
-      .map((r) => Math.floor(r.data.year! / 10) * 10),
-  ),
+  ...new Set(records.map((r) => decadeOf(r.data.year)).filter((d) => d !== undefined)),
 ].sort();
-
-// Map pressing-variant names to disc colours, in the order they're mentioned,
-// so "Orange & Blue Split" renders as a two-colour split disc.
-const vinylColors: [RegExp, string][] = [
-  [/\bred\b|blood/, "#a3121b"],
-  [/\borange\b|campfire/, "#e8661c"],
-  [/\byellow\b/, "#f2c418"],
-  [/\bochre\b/, "#b9852d"],
-  [/\bgreen\b/, "#3f9a3a"],
-  [/\baquamarine\b/, "#3fc1b0"],
-  [/\bblue\b/, "#2456c9"],
-  [/\b(violet|purple)\b/, "#7a3fb8"],
-  [/\b(pink|strawberry)\b/, "#ec6aa0"],
-  [/\bbrown\b|woodcutting/, "#6b4423"],
-  [/\btan\b/, "#c9a97a"],
-  [/\b(silver|gunmetal|grey)\b/, "#8a8d91"],
-  [/\bwhite\b/, "#ececec"],
-  [/\b(clear|transparent)\b/, "rgb(200 210 215 / 0.55)"],
-  [/\bblack\b/, "#111"],
-];
-
-function discStyle(variant?: string) {
-  const text = variant?.toLowerCase() ?? "";
-  const found = vinylColors
-    .map(([re, color]) => ({ color, at: text.search(re) }))
-    .filter((c) => c.at >= 0)
-    .sort((a, b) => a.at - b.at)
-    .map((c) => c.color)
-    .slice(0, 3);
-  if (found.length === 0) return undefined;
-  const step = 100 / found.length;
-  const stops = found.map((c, i) => `${c} ${i * step}% ${(i + 1) * step}%`);
-  return `--disc: conic-gradient(${stops.join(", ")})`;
-}
 ---
 
 <section id="records" class="scroll-mt-0">
-  <div
-    class="sticky top-0 z-20 flex flex-wrap border-b border-black bg-white font-mono text-xs uppercase"
-  >
-    <input
-      id="search"
-      type="search"
-      placeholder="Search artist or title"
-      class="min-w-48 grow rounded-none border-r border-black bg-transparent px-4 py-3 placeholder:text-neutral-500 placeholder:uppercase focus:bg-black focus:text-white focus:outline-none md:px-6"
-    />
-    <select
-      id="genre"
-      class="rounded-none border-r border-black bg-transparent px-4 py-3 uppercase focus:outline-2 focus:-outline-offset-2"
-      aria-label="Filter by genre"
-    >
-      <option value="">All genres</option>
-      {genres.map((g) => <option value={g}>{g}</option>)}
-    </select>
-    <select
-      id="sort"
-      class="rounded-none border-r border-black bg-transparent px-4 py-3 uppercase focus:outline-2 focus:-outline-offset-2"
-      aria-label="Sort by"
-    >
-      <option value="artist">Artist (A–Z)</option>
-      <option value="title">Title (A–Z)</option>
-      <option value="year-desc">Year (newest first)</option>
-      <option value="year-asc">Year (oldest first)</option>
-    </select>
-    <select
-      id="decade"
-      class="rounded-none bg-transparent px-4 py-3 uppercase focus:outline-2 focus:-outline-offset-2"
-      aria-label="Filter by decade"
-    >
-      <option value="">All decades</option>
-      {decades.map((d) => <option value={d}>{d}s</option>)}
-    </select>
-  </div>
-
-  <div
-    class="flex items-center gap-4 border-b border-black px-4 py-2 font-mono text-[11px] uppercase md:px-6"
-  >
-    <p id="count" aria-live="polite"></p>
-    <button type="button" id="clear" class="underline" hidden
-      >Clear filters ✕</button
-    >
-  </div>
-
-  <p
-    id="empty"
-    class="border-b border-black px-4 py-24 text-center font-mono text-xs uppercase"
-    hidden
-  >
-    No records match your filters.
-    <button type="button" id="clear-empty" class="underline"
-      >Clear filters</button
-    >
-  </p>
+  <FilterBar genres={genres} decades={decades} />
+  <ResultsBar />
 
   <ul class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" id="grid">
-    {
-      records.map(({ data }, i) => (
-        <li
-          class="group flex flex-col overflow-hidden border-r border-b border-black p-4 transition-colors duration-150 hover:bg-black hover:text-white md:p-6"
-          data-search={`${data.artist} ${data.title}`.toLowerCase()}
-          data-genres={data.genres.join("|")}
-          data-artist={sortKey(data.artist).toLowerCase()}
-          data-title={data.title.toLowerCase()}
-          data-year={data.year ?? ""}
-          data-decade={data.year ? Math.floor(data.year / 10) * 10 : ""}
-        >
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h2 class="text-2xl leading-tight font-medium tracking-tight text-balance">
-                {data.title.trim()}
-              </h2>
-              <p class="mt-1 font-mono text-[11px] uppercase">{data.artist}</p>
-            </div>
-            <span class="shrink-0 font-mono text-[11px]">
-              №{String(i + 1).padStart(3, "0")}
-            </span>
-          </div>
-
-          <div class="sleeve relative my-12 ml-[8%] aspect-square w-3/5">
-            <div
-              class="disc absolute inset-0 rounded-full"
-              style={discStyle(data.variant)}
-              aria-hidden="true"
-            />
-            {data.cover ? (
-              <Image
-                src={data.cover}
-                alt={`${data.title} by ${data.artist}`}
-                width={400}
-                height={400}
-                class="relative aspect-square w-full object-cover"
-              />
-            ) : (
-              <div class="relative flex aspect-square w-full items-center justify-center border border-current bg-white p-2 group-hover:bg-black text-center font-mono text-[11px] uppercase">
-                No cover
-              </div>
-            )}
-          </div>
-
-          <div class="mt-auto flex items-end justify-between gap-4 font-mono text-[11px] leading-snug uppercase">
-            <ul>
-              {data.label && <li>{data.label}</li>}
-              {data.variant && <li>{data.variant}</li>}
-              <li>
-                {[data.format, ...data.descriptions].filter(Boolean).join(" / ")}
-              </li>
-              {data.genres.length > 0 && <li>{data.genres.join(", ")}</li>}
-            </ul>
-            <span class="shrink-0 text-sm">{data.year ?? "—"}</span>
-          </div>
-        </li>
-      ))
-    }
+    {records.map(({ data }, i) => <RecordCard record={data} index={i} />)}
   </ul>
 </section>
 
 <script>
-  const search = document.querySelector<HTMLInputElement>("#search")!;
-  const genre = document.querySelector<HTMLSelectElement>("#genre")!;
-  const decade = document.querySelector<HTMLSelectElement>("#decade")!;
-  const sort = document.querySelector<HTMLSelectElement>("#sort")!;
-  const grid = document.querySelector<HTMLElement>("#grid")!;
-  const clear = document.querySelector<HTMLButtonElement>("#clear")!;
-  const clearEmpty = document.querySelector<HTMLButtonElement>("#clear-empty")!;
-  const empty = document.querySelector<HTMLElement>("#empty")!;
-  const count = document.querySelector<HTMLElement>("#count")!;
-  const items = [...document.querySelectorAll<HTMLElement>("#grid > li")];
-
-  function apply() {
-    const q = search.value.trim().toLowerCase();
-    let shown = 0;
-    for (const li of items) {
-      const match =
-        (!q || li.dataset.search!.includes(q)) &&
-        (!genre.value || li.dataset.genres!.split("|").includes(genre.value)) &&
-        (!decade.value || li.dataset.decade === decade.value);
-      li.hidden = !match;
-      if (match) shown++;
-    }
-    clear.hidden = !(q || genre.value || decade.value);
-    empty.hidden = shown > 0;
-    count.textContent = `${shown} of ${items.length} records`;
-  }
-
-  const text = (li: HTMLElement, key: "artist" | "title") =>
-    li.dataset[key] ?? "";
-  const byArtist = (a: HTMLElement, b: HTMLElement) =>
-    text(a, "artist").localeCompare(text(b, "artist")) ||
-    text(a, "title").localeCompare(text(b, "title"));
-
-  // Records without a year always sort last.
-  const byYear = (dir: 1 | -1) => (a: HTMLElement, b: HTMLElement) => {
-    const ya = a.dataset.year ? Number(a.dataset.year) : null;
-    const yb = b.dataset.year ? Number(b.dataset.year) : null;
-    if (ya === null && yb === null) return byArtist(a, b);
-    if (ya === null) return 1;
-    if (yb === null) return -1;
-    return (ya - yb) * dir || byArtist(a, b);
-  };
-
-  function applySort() {
-    const sorters: Record<string, (a: HTMLElement, b: HTMLElement) => number> =
-      {
-        artist: byArtist,
-        title: (a, b) =>
-          text(a, "title").localeCompare(text(b, "title")) || byArtist(a, b),
-        "year-desc": byYear(-1),
-        "year-asc": byYear(1),
-      };
-    grid.append(...[...items].sort(sorters[sort.value]));
-  }
-
-  [search, genre, decade].forEach((el) => el.addEventListener("input", apply));
-  sort.addEventListener("input", applySort);
-  function resetFilters() {
-    search.value = "";
-    genre.value = "";
-    decade.value = "";
-    apply();
-    search.focus();
-  }
-  clear.addEventListener("click", resetFilters);
-  clearEmpty.addEventListener("click", resetFilters);
-  apply();
+  import "../scripts/record-filters";
 </script>
