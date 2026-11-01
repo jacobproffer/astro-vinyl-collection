@@ -28,21 +28,6 @@
   rotate: 200deg;
 }
 
-.sleeve {
-  view-timeline: --sleeve block;
-}
-
-@keyframes slide-out {
-  from {
-    translate: 0 0;
-    rotate: 0deg;
-  }
-  to {
-    translate: 38% 0;
-    rotate: 200deg;
-  }
-}
-
 @keyframes drift {
   from {
     translate: 12% 0;
@@ -52,15 +37,19 @@
   }
 }
 
-/* Browsers without scroll-driven animations get the disc already pulled out. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .disc {
-      animation: slide-out linear both;
-      animation-timeline: --sleeve;
-      animation-range: entry 20% cover 50%;
-    }
+@media (prefers-reduced-motion: no-preference) {
+  .has-scroll-reveal .disc {
+    transition:
+      translate 500ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      rotate 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
 
+  .has-scroll-reveal .sleeve:not(.is-visible) .disc {
+    translate: 28% 0;
+    rotate: 185deg;
+  }
+
+  @supports (animation-timeline: view()) {
     .wordmark {
       animation: drift linear both;
       animation-timeline: view();
