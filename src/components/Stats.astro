@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+
+const records = (await getCollection("records")).map((r) => r.data);
+
+const count = (values: string[]) => {
+  const tally = new Map<string, number>();
+  for (const v of values) tally.set(v, (tally.get(v) ?? 0) + 1);
+  return [...tally].sort((a, b) => b[1] - a[1]);
+};
+
+const [topGenre, topGenreCount] = count(records.flatMap((r) => r.genres))[0] ?? [
+  "No data",
+  0,
+];
+const [topLabel, topLabelCount] = count(
+  records.flatMap((r) => (r.label ? [r.label] : [])),
+)[0] ?? ["No data", 0];
+const years = records.flatMap((r) => (r.year ? [r.year] : []));
+const first = years.length ? Math.min(...years) : undefined;
+const last = years.length ? Math.max(...years) : undefined;
+
+const stats = [
+  { label: "Records", value: records.length, note: "On the shelf" },
+  { label: "Top genre", value: topGenreCount, note: topGenre },
+  { label: "Top label", value: topLabelCount, note: topLabel },
+  {
+    label: "Years spanned",
+    value: first !== undefined && last !== undefined ? last - first : "—",
+    note: first !== undefined && last !== undefined ? `${first} — ${last}` : "No data",
+  },
+];
+---
+
+<section aria-labelledby="stats-heading">
+  <h2 id="stats-heading" class="sr-only">Collection statistics</h2>
+  <dl class="grid grid-cols-2 border-t border-black lg:grid-cols-4">
+    {
+      stats.map((s) => (
+        <div class="flex flex-col gap-6 border-r border-b border-black p-4 md:p-6">
+          <dt class="font-mono text-[11px] uppercase">{s.label}</dt>
+          <dd class="mt-auto">
+            <span class="block text-7xl leading-none font-medium tracking-tighter md:text-9xl">
+              {s.value}
+            </span>
+            <span class="mt-2 block font-mono text-[11px] uppercase">{s.note}</span>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

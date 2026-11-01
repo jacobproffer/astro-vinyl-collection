@@ -1,0 +1,22 @@
+{
+  "artist": "Creedence Clearwater Revival",
+  "title": "Green River",
+  "year": 1969,
+  "label": "Fantasy",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Folk Rock",
+    "Country Rock"
+  ],
+  "format": "Vinyl",
+  "variant": "Rockaway Press",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/creedence-clearwater-revival-green-river-1132211.jpg",
+  "discogsId": 1132211
+}

@@ -1,0 +1,22 @@
+{
+  "artist": "Slipknot",
+  "title": "Iowa",
+  "year": 2022,
+  "label": "Roadrunner Records",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Nu Metal"
+  ],
+  "format": "Vinyl",
+  "variant": "Green Translucent",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Limited Edition",
+    "Reissue"
+  ],
+  "cover": "../../assets/covers/slipknot-iowa-23116973.jpg",
+  "discogsId": 23116973
+}

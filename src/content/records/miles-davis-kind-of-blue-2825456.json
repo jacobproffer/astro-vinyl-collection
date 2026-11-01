@@ -1,0 +1,23 @@
+{
+  "artist": "Miles Davis",
+  "title": "Kind Of Blue",
+  "year": 2010,
+  "label": "Columbia",
+  "genres": [
+    "Jazz"
+  ],
+  "styles": [
+    "Modal",
+    "Cool Jazz"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/miles-davis-kind-of-blue-2825456.jpg",
+  "discogsId": 2825456,
+  "variant": "180 Gram",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Stereo"
+  ]
+}

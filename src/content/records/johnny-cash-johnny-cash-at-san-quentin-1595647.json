@@ -1,0 +1,22 @@
+{
+  "artist": "Johnny Cash",
+  "title": "Johnny Cash At San Quentin",
+  "year": 1969,
+  "label": "Columbia",
+  "genres": [
+    "Rock",
+    "Folk, World, & Country"
+  ],
+  "styles": [
+    "Country Rock",
+    "Country"
+  ],
+  "format": "Vinyl",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/johnny-cash-johnny-cash-at-san-quentin-1595647.jpg",
+  "discogsId": 1595647
+}

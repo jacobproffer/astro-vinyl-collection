@@ -18,8 +18,16 @@ const { pageTitle, pageDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <SiteSEO seo={{ title: pageTitle, description: pageDescription }} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono&family=Pirata+One&display=swap"
+    />
   </head>
-  <body>
+  <body
+    class="bg-white font-sans text-black antialiased selection:bg-black selection:text-white"
+  >
     <Header />
     <main id="content">
       <slot />

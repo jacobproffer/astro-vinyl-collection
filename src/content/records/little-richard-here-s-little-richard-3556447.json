@@ -1,0 +1,25 @@
+{
+  "artist": "Little Richard",
+  "title": "Here's Little Richard",
+  "year": 2012,
+  "label": "Specialty",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Rock & Roll"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/little-richard-here-s-little-richard-3556447.jpg",
+  "discogsId": 3556447,
+  "variant": "Red",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Record Store Day",
+    "Limited Edition",
+    "Reissue",
+    "Remastered",
+    "Mono"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "artist": "Billie Holiday",
+  "title": "The Platinum Collection",
+  "year": 2017,
+  "label": "Not Now Music",
+  "genres": [
+    "Jazz",
+    "Blues"
+  ],
+  "styles": [],
+  "format": "Vinyl",
+  "variant": "White",
+  "descriptions": [
+    "LP",
+    "Compilation"
+  ],
+  "cover": "../../assets/covers/billie-holiday-the-platinum-collection-10301958.jpg",
+  "discogsId": 10301958
+}

@@ -1,0 +1,19 @@
+{
+  "artist": "Jay-Z",
+  "title": "The Blueprint",
+  "year": 2011,
+  "label": "Roc-A-Fella Records",
+  "genres": [
+    "Hip Hop"
+  ],
+  "styles": [],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/jay-z-the-blueprint-3256786.jpg",
+  "discogsId": 3256786,
+  "variant": "Gatefold",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "artist": "Eminem",
+  "title": "The Slim Shady LP",
+  "year": 2023,
+  "label": "Aftermath Entertainment",
+  "genres": [
+    "Hip Hop"
+  ],
+  "styles": [
+    "Horrorcore",
+    "Hardcore Hip-hop"
+  ],
+  "format": "Vinyl",
+  "variant": "RTI Pressing",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Reissue",
+    "Remastered",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/eminem-the-slim-shady-lp-28328473.jpg",
+  "discogsId": 28328473
+}

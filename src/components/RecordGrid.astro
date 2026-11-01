@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import FilterBar from "./FilterBar.astro";
+import RecordCard from "./RecordCard.astro";
+import ResultsBar from "./ResultsBar.astro";
+import { decadeOf, sortKey } from "../lib/vinyl";
+
+const records = (await getCollection("records")).sort(
+  (a, b) =>
+    sortKey(a.data.artist).localeCompare(sortKey(b.data.artist)) ||
+    a.data.title.localeCompare(b.data.title),
+);
+
+const genres = [...new Set(records.flatMap((r) => r.data.genres))].sort();
+const decades = [
+  ...new Set(records.map((r) => decadeOf(r.data.year)).filter((d) => d !== undefined)),
+].sort();
+---
+
+<section id="records" class="scroll-mt-0" aria-labelledby="records-heading">
+  <h2 id="records-heading" class="sr-only">Browse records</h2>
+  <FilterBar genres={genres} decades={decades} />
+  <ResultsBar />
+
+  <ul class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" id="grid">
+    {records.map(({ data }, i) => <RecordCard record={data} index={i} />)}
+  </ul>
+</section>
+
+<script>
+  import "../scripts/record-filters";
+  import "../scripts/record-reveal";
+</script>

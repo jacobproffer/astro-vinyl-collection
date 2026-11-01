@@ -1,0 +1,21 @@
+{
+  "artist": "Kiss",
+  "title": "Love Gun",
+  "year": 1977,
+  "label": "Casablanca",
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Hard Rock"
+  ],
+  "format": "Vinyl",
+  "variant": "Terre Haute Pressing",
+  "descriptions": [
+    "LP",
+    "Album",
+    "Stereo"
+  ],
+  "cover": "../../assets/covers/kiss-love-gun-702495.jpg",
+  "discogsId": 702495
+}

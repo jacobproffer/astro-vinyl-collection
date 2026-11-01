@@ -1,6 +1,4 @@
 ---
-import Container from "@components/Container.astro";
-
 interface Props {
   headline: string;
 }
@@ -8,13 +6,13 @@ interface Props {
 const { headline } = Astro.props;
 ---
 
-<section>
-  <Container>
-    {
-      headline && (
-        <h1 class="font-medium text-xl leading-8 text-balance">{headline}</h1>
-      )
-    }
-    <slot />
-  </Container>
+<section class="px-4 pt-16 pb-6 md:px-6 md:pt-28">
+  {
+    headline && (
+      <h1 class="font-display text-8xl leading-[0.8] tracking-tight md:text-[10rem]">
+        {headline}
+      </h1>
+    )
+  }
+  <slot />
 </section>

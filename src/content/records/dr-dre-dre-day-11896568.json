@@ -1,0 +1,23 @@
+{
+  "artist": "Dr. Dre",
+  "title": "Dre Day",
+  "year": 2018,
+  "label": "Death Row Records",
+  "genres": [
+    "Hip Hop"
+  ],
+  "styles": [
+    "G-funk",
+    "Gangsta"
+  ],
+  "format": "Vinyl",
+  "cover": "../../assets/covers/dr-dre-dre-day-11896568.jpg",
+  "discogsId": 11896568,
+  "variant": "Clear",
+  "descriptions": [
+    "12\"",
+    "33 ⅓ RPM",
+    "Record Store Day",
+    "Reissue"
+  ]
+}
