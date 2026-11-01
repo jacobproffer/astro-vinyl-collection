@@ -9,19 +9,26 @@ const count = (values: string[]) => {
   return [...tally].sort((a, b) => b[1] - a[1]);
 };
 
-const [topGenre, topGenreCount] = count(records.flatMap((r) => r.genres))[0];
+const [topGenre, topGenreCount] = count(records.flatMap((r) => r.genres))[0] ?? [
+  "No data",
+  0,
+];
 const [topLabel, topLabelCount] = count(
   records.flatMap((r) => (r.label ? [r.label] : [])),
-)[0];
+)[0] ?? ["No data", 0];
 const years = records.flatMap((r) => (r.year ? [r.year] : []));
-const first = Math.min(...years);
-const last = Math.max(...years);
+const first = years.length ? Math.min(...years) : undefined;
+const last = years.length ? Math.max(...years) : undefined;
 
 const stats = [
   { label: "Records", value: records.length, note: "On the shelf" },
   { label: "Top genre", value: topGenreCount, note: topGenre },
   { label: "Top label", value: topLabelCount, note: topLabel },
-  { label: "Years spanned", value: last - first, note: `${first} — ${last}` },
+  {
+    label: "Years spanned",
+    value: first !== undefined && last !== undefined ? last - first : "—",
+    note: first !== undefined && last !== undefined ? `${first} — ${last}` : "No data",
+  },
 ];
 ---
 

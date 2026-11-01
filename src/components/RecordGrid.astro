@@ -68,6 +68,7 @@ function discStyle(variant?: string) {
     <select
       id="genre"
       class="rounded-none border-r border-black bg-transparent px-4 py-3 uppercase focus:outline-2 focus:-outline-offset-2"
+      aria-label="Filter by genre"
     >
       <option value="">All genres</option>
       {genres.map((g) => <option value={g}>{g}</option>)}
@@ -85,6 +86,7 @@ function discStyle(variant?: string) {
     <select
       id="decade"
       class="rounded-none bg-transparent px-4 py-3 uppercase focus:outline-2 focus:-outline-offset-2"
+      aria-label="Filter by decade"
     >
       <option value="">All decades</option>
       {decades.map((d) => <option value={d}>{d}s</option>)}

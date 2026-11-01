@@ -134,10 +134,12 @@ while (page <= pages) {
       cover,
       discogsId: info.id,
     };
+    const file = `${slug}.json`;
     await writeFile(
-      path.join(RECORDS_DIR, `${slug}.json`),
+      path.join(RECORDS_DIR, file),
       JSON.stringify(record, null, 2) + "\n",
     );
+    known.set(info.id, { file, data: record });
     added++;
     await sleep(1000);
   }
