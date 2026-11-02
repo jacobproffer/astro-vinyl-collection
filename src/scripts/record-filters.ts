@@ -52,16 +52,62 @@ function applySort() {
   grid.append(...[...items].sort(sorters[sort.value]));
 }
 
-[search, genre, decade].forEach((el) => el.addEventListener("input", apply));
-sort.addEventListener("input", applySort);
+// Genres appear in the URL as slugs, e.g. "Stage & Screen" -> "stage-and-screen".
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+// Mirror the current filters into the query string, e.g. ?q=dre&genre=hip-hop&decade=1990.
+function writeUrl() {
+  const params = new URLSearchParams();
+  const q = search.value.trim();
+  if (q) params.set("q", q);
+  if (genre.value) params.set("genre", slugify(genre.value));
+  if (decade.value) params.set("decade", decade.value);
+  if (sort.value !== "artist") params.set("sort", sort.value);
+  const qs = params.toString();
+  history.replaceState(null, "", qs ? `?${qs}` : location.pathname);
+}
+
+// Values that don't match an option are ignored, so stale links fall back to "all".
+function readUrl() {
+  const params = new URLSearchParams(location.search);
+  const pick = (select: HTMLSelectElement, value: string | null, map = (v: string) => v) => {
+    const option = [...select.options].find((o) => value && map(o.value) === value);
+    if (option) select.value = option.value;
+  };
+  search.value = params.get("q") ?? "";
+  pick(genre, params.get("genre"), slugify);
+  pick(decade, params.get("decade"));
+  pick(sort, params.get("sort"));
+}
+
+[search, genre, decade].forEach((el) =>
+  el.addEventListener("input", () => {
+    apply();
+    writeUrl();
+  }),
+);
+sort.addEventListener("input", () => {
+  applySort();
+  writeUrl();
+});
 
 function resetFilters() {
   search.value = "";
   genre.value = "";
   decade.value = "";
+  sort.value = "artist";
+  applySort();
   apply();
+  writeUrl();
   search.focus();
 }
 clear.addEventListener("click", resetFilters);
 clearEmpty.addEventListener("click", resetFilters);
+readUrl();
+applySort();
 apply();
