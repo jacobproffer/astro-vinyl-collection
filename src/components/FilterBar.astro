@@ -10,18 +10,19 @@ const { genres, decades } = Astro.props;
 ---
 
 <div
-  class="flex flex-wrap border-b border-black bg-white font-mono text-base uppercase"
+  class="grid grid-cols-2 border-b border-black bg-white font-mono text-base uppercase md:flex md:flex-wrap"
 >
   <label for="search" class="sr-only">Search artist or title</label>
   <input
     id="search"
     type="search"
     placeholder="Search artist or title"
-    class="min-w-48 grow rounded-none border-r border-black bg-transparent px-4 py-3 placeholder:text-neutral-500 placeholder:uppercase focus:bg-black focus:text-white focus:outline-none md:px-6"
+    class="col-span-2 min-w-48 grow rounded-none border-b border-black bg-transparent md:col-span-1 md:border-r md:border-b-0 px-4 py-3 placeholder:text-neutral-500 placeholder:uppercase focus:bg-black focus:text-white focus:outline-none md:px-6"
   />
   <FilterSelect
     id="genre"
     label="Filter by genre"
+    class="col-span-2 border-b border-black md:col-span-1 md:border-r md:border-b-0"
     options={[
       { value: "", label: "All genres" },
       ...genres.map((g) => ({ value: g, label: g })),
@@ -30,6 +31,7 @@ const { genres, decades } = Astro.props;
   <FilterSelect
     id="sort"
     label="Sort by"
+    class="border-r border-black"
     options={[
       { value: "artist", label: "Artist (A–Z)" },
       { value: "title", label: "Title (A–Z)" },
@@ -40,7 +42,6 @@ const { genres, decades } = Astro.props;
   <FilterSelect
     id="decade"
     label="Filter by decade"
-    last
     options={[
       { value: "", label: "All decades" },
       ...decades.map((d) => ({ value: d, label: `${d}s` })),
