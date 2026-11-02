@@ -12,7 +12,7 @@ const { record, index } = Astro.props;
 ---
 
 <li
-  class="group flex flex-col overflow-hidden border-r border-b border-black p-4 transition-colors duration-150 hover:bg-black hover:text-white md:p-6"
+  class="group row-span-3 grid grid-rows-subgrid overflow-hidden border-r border-b border-black p-4 transition-colors duration-150 hover:bg-black hover:text-white md:p-6"
   data-search={`${record.artist} ${record.title}`.toLowerCase()}
   data-genres={record.genres.join("|")}
   data-artist={sortKey(record.artist).toLowerCase()}
