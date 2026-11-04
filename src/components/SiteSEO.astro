@@ -12,11 +12,19 @@ const siteName = "Vinyl Collection";
 const defaultDescription =
   "A personal archive of vinyl records, soundtracks, and pressings.";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const description = seo?.description ?? defaultDescription;
+const siteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: Astro.site?.toString() ?? canonicalURL.origin,
+  description,
+};
 ---
 
 <SEO
   title={seo?.title}
-  description={seo?.description ?? defaultDescription}
+  description={description}
   canonical={canonicalURL}
   openGraph={{
     basic: {
@@ -49,4 +57,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       },
     ],
   }}
+/>
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(siteStructuredData).replace(/</g, "\\u003c")}
 />

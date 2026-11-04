@@ -8,7 +8,15 @@ import boberbot from "boberbot";
 // https://astro.build/config
 export default defineConfig({
   site: "https://records.proffer.dev/",
-  integrations: [sitemap(), boberbot()],
+  integrations: [
+    sitemap(),
+    boberbot({
+      name: "Vinyl Collection",
+      description:
+        "A personal archive of vinyl records, soundtracks, and pressings.",
+      strict: true,
+    }),
+  ],
   // Image optimization configuration
   image: {
     service: {

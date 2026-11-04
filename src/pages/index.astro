@@ -4,9 +4,11 @@ import Hero from "@components/Hero.astro";
 import Stats from "@components/Stats.astro";
 import RecordGrid from "@components/RecordGrid.astro";
 const pageTitle = "Vinyl Collection";
+const pageDescription =
+  "A personal archive of vinyl records, soundtracks, and pressings.";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
   <Hero headline="/ Records" />
   <Stats />
   <RecordGrid />
